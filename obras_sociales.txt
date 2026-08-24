@@ -1,0 +1,17 @@
+-- REGLAS Y DESCUENTOS DE OBRAS SOCIALES ---
+
+PAMI:
+- Medicamentos crónicos (ej. Losartán, Enalapril, Metformina, Atenolol, Levotiroxina): Cobertura del 100%. El afiliado paga $0.
+- Medicamentos agudos/generales (ej. Amoxicilina, Ibuprofeno, Paracetamol, Diclofenac): Cobertura del 50% sobre el Precio Base (PVP).
+
+IAPOS:
+- Cobertura general del 70% para todos los medicamentos recetados. El afiliado solo paga el 30% del precio total.
+
+OSDE (Planes 210, 310, 410):
+- Cobertura del 40% sobre el Precio Base (PVP) para medicamentos generales.
+- Para pastillas anticonceptivas (ej. Yasmin, Microgynon), la cobertura es del 100%.
+
+JERÁRQUICOS SALUD:
+- Cobertura del 50% en farmacia. El paciente abona la otra mitad del PVP.
+
+Aclaración importante: Para que cualquier obra social cubra un medicamento, el cliente debe presentar la receta médica válida y credencial.
