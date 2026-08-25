@@ -15,15 +15,11 @@ from langchain_core.messages import HumanMessage, AIMessage
 
 load_dotenv()
 
-# ==========================================
-# CONFIGURACIÓN DE LA PÁGINA WEB
-# ==========================================
+
 st.set_page_config(page_title="Boris - Farmacia", page_icon="💊")
 st.title("💊 Farmacia Asistente - Boris")
 
-# ==========================================
-# CACHÉ (Para no leer el CSV en cada mensaje)
-# ==========================================
+
 @st.cache_resource
 def iniciar_sistema():
     # 1. Cargar datos
@@ -33,11 +29,9 @@ def iniciar_sistema():
     docs_txt = loader_txt.load()
     documentos = docs_csv + docs_txt
 
-    # Trocear
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     documentos_split = splitter.split_documents(documentos)
 
-    # 2. Vector DB
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vector_db = FAISS.from_documents(documentos_split, embeddings)
     retriever = vector_db.as_retriever(search_kwargs={"k": 3})
@@ -79,9 +73,7 @@ def iniciar_sistema():
 # Arrancamos el cerebro de Boris (¡Esto demora unos segundos solo la primera vez!)
 qa_chain = iniciar_sistema()
 
-# ==========================================
-# MEMORIA DE LA PANTALLA
-# ==========================================
+
 # Si es la primera vez que entramos, creamos las memorias vacías
 if "historial_langchain" not in st.session_state:
     st.session_state.historial_langchain = []
@@ -92,9 +84,7 @@ for msg in st.session_state.mensajes_pantalla:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# ==========================================
-# CAJA DE TEXTO PARA ESCRIBIR (El input)
-# ==========================================
+
 if pregunta := st.chat_input("Escribí tu pregunta acá..."):
     # 1. Mostrar lo que el usuario escribió
     with st.chat_message("user"):
