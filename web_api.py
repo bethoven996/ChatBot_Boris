@@ -37,13 +37,12 @@ def iniciar_sistema():
     retriever = vector_db.as_retriever(search_kwargs={"k": 3})
 
     # 3. LLM
+       # 3. LLM
     llm = ChatGroq(
         model="openai/gpt-oss-20b", 
         temperature=0.4,
-        # Dejé tu clave acá para que ande directo. Luego podés cambiarla por os.getenv("GROQ_API_KEY")
-        api_key="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",
+        api_key=os.getenv("GROQ_API_KEY"),
     )
-
     # 4. Prompts y Cadenas
     prompt_memoria = ChatPromptTemplate.from_messages([
         ("system", "Teniendo en cuenta el historial de la conversación y la nueva pregunta del usuario, reformula la pregunta para que se entienda por sí sola. NO la respondas, solo reescribila."),
