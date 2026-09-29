@@ -188,10 +188,6 @@ if pregunta := st.chat_input("Escribí tu pregunta acá..."):
             texto_respuesta = respuesta['answer']
             st.markdown(texto_respuesta)
 
-            with st.expander("🔍 Ver qué encontró el buscador (debug)"):
-                for i, doc in enumerate(respuesta.get("context", []), start=1):
-                    st.text(f"{i}. {doc.page_content}")
-
     # 3. Guardar la respuesta de Boris en la pantalla
     st.session_state.mensajes_pantalla.append({"role": "assistant", "content": texto_respuesta})
 
